@@ -1,0 +1,37 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="over" opened="false">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option [routerLink]="['']">Cursos</mat-list-option>
+      <mat-list-option [routerLink]="['']">About</mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar color="primary" class="navbar">
+      <button mat-icon-button (click)="drawer.toggle()" aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>AsisteUCO</span>
+      <span class="spacer"></span>
+
+      <!-- Enlaces visibles también en la toolbar -->
+      <a mat-button [routerLink]="['/home']">Home</a>
+      <a mat-button [routerLink]="['/about']">About</a>
+
+      <!-- Menú usuario -->
+      <ng-container *ngIf="authService.user$ | async as user">
+        <button mat-button [matMenuTriggerFor]="userMenu">{{ user.name }}</button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item disabled>{{ user.email }}</button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            Logout
+          </button>
+        </mat-menu>
+      </ng-container>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

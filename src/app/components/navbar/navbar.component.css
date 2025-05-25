@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #004f4f;
+  color: white;
+  padding: 0 16px;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  z-index: 1200; 
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.drawer-content {
+  padding-top: 64px; 
+  height: 100vh; 
+  box-sizing: border-box;
+}
+
+.example-container {
+  height: 100vh;
+}
+
+
+.mat-drawer {
+  top: 64px !important; 
+  height: calc(100% - 64px) !important; 
+  z-index: 1000 !important; 
+  border-radius: 0%;
+}
